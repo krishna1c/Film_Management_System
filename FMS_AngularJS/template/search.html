@@ -1,0 +1,35 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-4" style="margin-top: 80px;">
+            <div class="well">
+                <h2>Search By</h2>
+                <h3>Title</h3>
+                <input type="text" ng-init="title=''" ng-model="title" placeholder="Enter Search Term" class="form-control"  ng-disabled="category.length!=0 || language.length!=0 || rating.length!=0 || actor.length!=0">
+                <h3>Category</h3>
+                <input type="text" ng-init="category=''"  ng-model="category" placeholder="Enter Search Term" class="form-control" ng-disabled="title.length!=0  || language.length!=0 || rating.length!=0 || actor.length!=0">
+                <h3>Actor</h3>
+                <input type="text" ng-init="actor=''" ng-model="actor" placeholder="Enter Search Term" class="form-control"  ng-disabled="title.length!=0 || category.length!=0 || language.length!=0 || rating.length!=0">
+                <h3>Language</h3>
+                <input type="text" ng-init="language=''" ng-model="language" placeholder="Enter Search Term" class="form-control"  ng-disabled="title.length!=0 || category.length!=0  || rating.length!=0 || actor.length!=0">
+                <h3>Rating</h3>
+                <input type="text" ng-init="rating=''" ng-model="rating" placeholder="Enter Search Term" class="form-control"  ng-disabled="title.length!=0 || category.length!=0 || language.length!=0  || actor.length!=0">
+                <hr>
+                <a ng-click="searchL(title,actor,rating,language,category)"><button class="btn btn-group-lg btn-primary" type="button">Search</button></a>
+
+
+            </div>
+        </div>
+        <div ui-view><div class="col-md-8" style="margin-top: 80px;">
+            <div class="well"  style="background-color: #ffffff;">
+                <h1>Enter Search Term To Get Films
+
+                </h1>
+
+            </div>
+        </div></div>
+    </div>
+
+</div>
+</div>

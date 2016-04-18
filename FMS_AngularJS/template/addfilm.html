@@ -1,0 +1,125 @@
+
+<div class="side-body" style="margin-top: 100px">
+
+    <form class="form-horizontal">
+        <div ng-if="status==true">
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">Close</button>
+                <strong>Success !</strong> Movie Added SuccessFully
+            </div>
+        </div>
+        <div ng-if="status==false">
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">Close</button>
+                <strong>Ooops !</strong> Some Error !!
+            </div>
+        </div>
+        <fieldset>
+            <legend>ADD NEW FILM DETAILS</legend>
+            <div class="form-group">
+                <label for="filmTitle" class="col-lg-2 control-label">Title</label>
+                <div class="col-lg-6">
+                    <input type="text" ng-model="film.title" class="form-control" id="filmTitle" placeholder="Movie Title" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="filmDescription" class="col-lg-2 control-label">Description</label>
+                <div class="col-lg-6">
+                    <textarea ng-model="film.description" class="form-control" rows="3" id="filmDescription"></textarea>
+                    <!-- <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="releaseYear" class="col-lg-2 control-label">Release Year</label>
+                <div class="col-lg-2">
+                    <input type="number" ng-model="film.release_year" min="1900" max="2016" class="form-control" id="releaseYear" placeholder="Release Year" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="language" class="col-lg-2 control-label">Language</label>
+                <div class="col-lg-2">
+                    <input type="text" ng-model="film.languages.name" class="form-control" id="language" placeholder="Language" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="duration" class="col-lg-2 control-label">Duration</label>
+                <div class="col-lg-2">
+                    <input type="number" ng-model="film.length" class="form-control" id="duration" placeholder="Duration">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rating" class="col-lg-2 control-label">Rating</label>
+                <div class="col-lg-2">
+                    <select class="form-control" id="rating" ng-model="film.rating" required>
+                        <option>-Rating-</option>
+                        <option value="PG">PG</option>
+                        <option value="G">G</option>
+                        <option value="NC17">NC-17</option>
+                        <option value="PG13">PG-13</option>
+                        <option value="R">R</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="category" class="col-lg-2 control-label">Category</label>
+                <div class="col-lg-2">
+                    <input type="text" ng-model="film.category.name" class="form-control" id="category" placeholder="Category" required>
+                </div>
+            </div>
+
+
+                <legend>Add Actors in the Film</legend>
+                <div ng-repeat="actor in actors">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Actor {{actors.indexOf(actor)}}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="firstName" class="col-lg-2 control-label">First Name</label>
+                                <div class="col-lg-6">
+                                    <input type="text" ng-model="actor.first_name" class="form-control" id="firstName" placeholder="First Name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="col-lg-2 control-label">Last Name</label>
+                                <div class="col-lg-6">
+                                    <input type="text" ng-model="actor.last_name" class="form-control" id="lastName" placeholder="Last Name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="photoId" class="col-lg-2 control-label">Photo</label>
+                                <div class="col-lg-6">
+                                    <input type="file" fileread="actor.photo_url" class="form-control" id="photoId">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary" ng-show="$last" ng-model="film.actors" ng-click="addNewActor()">Add Actor</button>
+                        </div>  <div class="col-md-2"><button type="submit" class="btn btn-primary" ng-show="$last" ng-click="removeActor()">Remove Actor</button>
+                    </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="reset" ng-show="$last" class="btn btn-default">Cancel</button>
+                            <button type="submit" ng-show="$last" class="btn btn-primary" ng-click="addFilm(film,actors)">Submit</button>
+                        </div>
+                    </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+</div>
+</div>
+</div>
+
+</div>

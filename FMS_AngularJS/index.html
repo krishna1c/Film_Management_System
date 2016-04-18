@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myFMS">
+<link rel="stylesheet" href="lib/css/bootstrap.min.css">
+<link rel="stylesheet" href="lib/css/bootswatch.css">
+<script src="lib/js/jquery.min.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+<!-- Angular -->
+<link rel="stylesheet" href="lib/css/bootswatch.css">
+<script src="lib/js/angular-1.4.8/angular.min.js"></script>
+<script src="lib/js/angular-1.4.8/angular-animate.min.js"></script>
+<!-- UI-Router -->
+<script src="lib/ui-router.js"></script>
+
+
+<style>
+    .jumbotron{
+        position: relative;
+        padding:100px !important;
+        background: #16a085;
+
+        color:white;
+        text-align:center;
+        margin-bottom: 0 !important;
+    }
+    .carousel-inner.onebyone-carosel { margin: auto; width: 90%; }
+    .onebyone-carosel .active.left { left: -33.33%; }
+    .onebyone-carosel .active.right { left: 33.33%; }
+    .onebyone-carosel .next { left: 33.33%; }
+    .onebyone-carosel .prev { left: -33.33%; }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>FMS</title>
+</head>
+<body>
+<div ng-include="'menu.html'"></div>
+<div ui-view></div>
+<!--<ui-loading-view root-state="home"></ui-loading-view>-->
+<script src = "lib/js/fms/main.js"></script>
+<script src="lib/js/fms/addComponets.js"></script>
+<script src="lib/js/fms/controllers/AddController.js"></script>
+<script src="lib/js/fms/controllers/ModifyController.js"></script>
+<script src="lib/js/fms/controllers/RemoveController.js"></script>
+<script src="lib/js/fms/controllers/ViewAllController.js"></script>
+<script src="lib/js/fms/service/service.js"></script>
+<script src="lib/js/fms/service/postservice.js"></script>
+<script src="lib/js/fms/controllers/SearchController.js"></script>
+
+<script src="lib/js/dirPagination.js"></script>
+<!--<script src="lib/js/controller/EventServiceJson.js"></script>-->
+
+</body>
+</html>

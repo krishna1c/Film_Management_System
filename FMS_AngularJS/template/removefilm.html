@@ -1,0 +1,55 @@
+<div class="side-body" style="margin-top: 100px">
+
+
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>Enter The Title Of Removing Film</legend>
+                    <div class="form-group">
+                        <label for="filmTitle" class="col-lg-2 control-label">Title</label>
+                        <div class="col-lg-6">
+                            <input type="text" ng-model="filmName" class="form-control" id="filmTitle" placeholder="Enter Title" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" ng-click="removefilm(filmName)">Remove</button>
+                    </div>
+                </fieldset>
+            </form>
+
+<div>
+
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+        <div ng-if="view==true">
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">Close</button>
+                <strong>Success !</strong> Movie Deleted SuccessFully
+            </div>
+        </div>
+        <div ng-if="view==false">
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">Close</button>
+                <strong>Ooops !</strong> Some Error !!
+            </div>
+        </div>
+        <div ng-repeat="film in data">
+            <hr>
+            <div class="row" >
+                <hr>
+                <div class="col-md-3" align="center"><a ng-click="vam(__currentPage)"> <img class="img-thumbnail" width="160px" height="160px" class="media-object" src="http://placehold.it/250x250"></a></div>
+                <div class="col-md-6" style="border-right: 1px dashed #333;border-left: 1px dashed #333;height:100%;left: 5px;">
+                    <a ui-sref="search.l({myParam: film})"><b><h3><b class="text-info"> {{film.title | titlecase}}</b></abbr></h3></b></a>
+                    <h4><b class="text-danger">Actors :</b><b class="text-success"> <span ng-repeat="a in film.actors| limitTo: 2">{{a.first_name | titlecase}}{{$last ? '' : ($index==Users.length-2) ? ' and ' : ', '}}</span></b></h4>
+                    <h4><b class="text-danger">Category :</b><b class="text-success">{{film.category.name}}</b></h4>
+                    <h4><b class="text-danger">Laguage :</b><b class="text-success">{{film.languages.name}}</b></h4>
+                    <br>
+                </div>
+                <div class="col-md-3 text-center"><h1><b class="text-danger">{{film.release_year}}</b></h1><h3><b class="text-danger">{{film.rating}}</b></h3></div>
+
+            </div>
+
+            <hr>
+            <button type="submit" class="btn btn-primary" ng-click="deletefilm(film.title)">Remove</button>
+        </div>
+    </div>
+
+
+</div>

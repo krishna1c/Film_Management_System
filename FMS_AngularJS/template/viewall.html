@@ -1,0 +1,62 @@
+<div class="col-md-2"></div>
+<div class="col-md-8" style="margin-top: 80px;">
+    <div class="well"  style="background-color: #ffffff;">
+        <div ng-if="view===undefined"><h1>Loading....</h1></div>
+        <div ng-if="view.length==0 ">
+            <br><br><br> <br>
+            <img src="snott.png" class="img-responsive center-block">
+            <b> <h1 class="text-center text-primary" style="font-size: 60px">OOPS!!!</h1> </b>
+            <b> <h1 class="text-center text-danger">Search Result Not Found</h1> </b>  <br> <br><br><br></div>
+        <div ng-if="view!=undefined && view.length!=0" >
+            <h1>Search results for <b class="text-primary"> Search Word</b> are <b class="text-primary">{{view.length}}</b></h1>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">
+                    <h3 style="margin-top:5px;">Search : </h3>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" ng-model="search" class="form-control" placeholder="Search Term">
+                </div>
+                <div class="col-md-2">
+                    <h3 style="margin-top:5px;">Sort By : </h3>
+                </div>
+                <div class="col-md-3">
+                    <select ng-model="sortName" class="form-control">
+                        <option value="">All</option>
+                        <option value = "title">Title</option>
+                        <option value = "language.name">Language</option>
+                        <option value = "category.name">Category</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+
+
+
+            <div dir-paginate="film in view | orderBy:sortName | filter : search | itemsPerPage:5 track by film.title">
+                <div class="row">
+                    <div class="col-md-3" align="center"><a ng-click="vam(__currentPage)"> <img class="img-thumbnail" width="160px" height="160px" class="media-object" src="http://placehold.it/250x250"></a></div>
+                    <div class="col-md-6" style="border-right: 1px dashed #333;border-left: 1px dashed #333;height:100%;left: 5px;">
+                        <a ui-sref="search.l({myParam: film})"><b><h3><b class="text-info"> {{film.title | titlecase}}</b></abbr></h3></b></a>
+                        <h4><b class="text-danger">Actors :</b><b class="text-success"> <span ng-repeat="a in film.actors| limitTo: 2">{{a.first_name | titlecase}}{{$last ? '' : ($index==Users.length-2) ? ' and ' : ', '}}</span></b></h4>
+                        <h4><b class="text-danger">Category :</b><b class="text-success">{{film.category.name}}</b></h4>
+                        <h4><b class="text-danger">Laguage :</b><b class="text-success">{{film.languages.name}}</b></h4>
+                        <br>
+                    </div>
+                    <div class="col-md-3 text-center"><h1><b class="text-danger">{{film.release_year}}</b></h1><h3><b class="text-danger">{{film.rating}}</b></h3></div>
+
+                </div>
+                <hr>
+            </div>
+            <div align="center">
+                <dir-pagination-controls
+                        max-size="10"
+                        direction-links="true"
+                        boundary-links="true" >
+                </dir-pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="col-md-2"></div>
